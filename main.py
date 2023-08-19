@@ -1,14 +1,14 @@
 import requests
 
-from bs4 import BeautifulSoup
+import bs4
 
-url = input("Enter url here:")
+url = "https://www.w3schools.com/"
 
 r = requests.get(url)
 
-s = BeautifulSoup(r.text, 'html.parser')
+s = bs4.BeautifulSoup(r.text, 'html.parser')
 
-print("The website title is :")
+print("The website links are :")
 
-for title in s.find_all('title'):
-    print(title.get_text())
+for a in s.find_all('a'):
+    print(a.get('href'))
